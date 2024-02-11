@@ -23,7 +23,7 @@ def compute_pandas_digest(df) -> str:
     trimmed_df = df.head(MAX_ROWS)
 
     # keep string and number columns, drop other column types
-    string_columns = trimmed_df.columns[(df.applymap(type) == str).all(0)]
+    string_columns = trimmed_df.columns[(df.map(type) == str).all(0)]
     numeric_columns = trimmed_df.select_dtypes(include=[np.number]).columns
 
     desired_columns = string_columns.union(numeric_columns)
@@ -42,7 +42,8 @@ def compute_numpy_digest(features, targets=None) -> str:
     """
     Computes a digest for the given numpy array.
 
-    :param features: A numpy array containing dataset features.
+    :param features: A numpy array cont:q
+    aining dataset features.
     :param targets: A numpy array containing dataset targets. Optional.
     :return: A string digest.
     """
